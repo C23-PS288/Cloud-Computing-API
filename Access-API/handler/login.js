@@ -3,15 +3,14 @@ const { User } = require('../models');
 const Validator = require('fastest-validator');
 const validation = new Validator();
 
+
 module.exports = async (req, res) => {
   const schema = {
-    name: 'string|empty:false',
     email: 'email|empty:false',
     password: 'string|min:8'
   }
 
   const validate = validation.validate(req.body, schema);
-
   if (validate.length) {
     return res.status(400).json({
       status: 'error',
@@ -23,27 +22,27 @@ module.exports = async (req, res) => {
     where: { email: req.body.email }
   });
 
-  if (user) {
-    return res.status(409).json({
+  if (!user) {
+    return res.status(404).json({
       status: 'error',
-      message: 'email already used'
+      message: 'user not found'
     });
   }
 
-  const password = await bcrypt.hash(req.body.password, 10);
-
-  const data = {
-    password,
-    name: req.body.name,
-    email: req.body.email
+  const isValidPassword = await bcrypt.compare(req.body.password, user.password);
+  if (!isValidPassword) {
+    return res.status(404).json({
+      status: 'error',
+      message: 'user not found'
+    });
   }
 
-  const createdUser = await User.create(data);
-
-  return res.json({
+  res.json({
     status: 'success',
     data: {
-      id: createdUser
+      id: user.id,
+      name: user.name,
+      email: user.email,
     }
-  })
+  });
 }
