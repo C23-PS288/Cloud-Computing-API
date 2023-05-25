@@ -4,17 +4,24 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const mainRouter = require('./routes/routes');
+const router = require('./routes/routes');
 
 const app = express();
+const port = process.env.PORT || '3000';
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', mainRouter);
-app.use('/users', mainRouter);
 
-module.exports = app;
+app.get('/', (req, res) => {
+  res.send({
+    message: 'connection success',
+  });
+});
+app.use('/users', router);
+
+app.listen(port, function () {
+  console.log(`app listening on port ${port}!`)
+});
