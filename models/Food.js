@@ -1,29 +1,28 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const Food = sequelize.define('Food', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false
     },
-    name: {
+    nama_warung: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    email: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false
-    },
-    password: {
+    menu: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    favorite_food: {
+    kategori: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
-    budget: {
+    harga: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    menu_pic: {
       type: DataTypes.STRING,
       allowNull: true
     }, 
@@ -39,9 +38,9 @@ module.exports = (sequelize, DataTypes) => {
     }
 
   }, {
-    tableName: 'users',
+    tableName: 'foods',
     timestamps: true
   });
 
-  return User;
+  return Food;
 }
