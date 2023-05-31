@@ -20,14 +20,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      favorite_food: {
-        type: Sequelize.STRING,
-        allowNull: true
-      },
-      budget: {
-        type: Sequelize.INTEGER,
-        allowNull: true
-      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false

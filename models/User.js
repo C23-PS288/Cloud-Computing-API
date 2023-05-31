@@ -19,14 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    favorite_food: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    budget: {
-      type: DataTypes.STRING,
-      allowNull: true
-    }, 
     createdAt: {
       field: 'created_at',
       type: DataTypes.DATE,
