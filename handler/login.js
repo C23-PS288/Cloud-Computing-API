@@ -60,6 +60,7 @@ module.exports = async (req, res) => {
       name: user.name,
       email: user.email,
       accessToken,
+      refreshToken,
     },
   });
 };
