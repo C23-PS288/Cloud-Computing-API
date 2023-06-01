@@ -7,6 +7,7 @@ router.post('/register', usersHandler.register);
 router.post('/login', usersHandler.login);
 router.get('/', usersHandler.checkAllUser);
 router.get('/:id', usersHandler.getUser);
+router.post('/:id', usersHandler.updateUser);
 router.post('/logout', usersHandler.logout);
 router.get('/protected', authenticateToken, (req, res) => {
   const userId = req.user.id;
