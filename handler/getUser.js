@@ -1,6 +1,7 @@
 const { User } = require('../models');
 
 module.exports = async (req, res) => {
+  try {
   const id = req.params.id;
 
   const user = await User.findByPk(id, {
@@ -20,4 +21,12 @@ module.exports = async (req, res) => {
     status: 'success',
     data: user
   });
+
+  } catch (error) {
+  return res.status(500).json({
+    code: '500',
+    status: 'error',
+    message: 'internal server error'
+    });
+  }
 }
