@@ -5,6 +5,7 @@ const authenticateToken = require('../middleware/checkMiddleware');
 
 router.post('/register', usersHandler.register);
 router.post('/login', usersHandler.login);
+router.get('/', usersHandler.checkAllUser);
 router.get('/:id', usersHandler.getUser);
 router.post('/logout', usersHandler.logout);
 router.get('/protected', authenticateToken, (req, res) => {
