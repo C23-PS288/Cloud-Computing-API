@@ -16,6 +16,7 @@ module.exports = async (req, res) => {
   const validate = validation.validate(req.body, schema);
   if (validate.length) {
     return res.status(400).json({
+      code: '400',
       status: 'error',
       message: validate
     });
@@ -27,6 +28,7 @@ module.exports = async (req, res) => {
 
   if (!user) {
     return res.status(404).json({
+      code: '404',
       status: 'error',
       message: 'user not found'
     });
@@ -35,6 +37,7 @@ module.exports = async (req, res) => {
   const isValidPassword = await bcrypt.compare(req.body.password, user.password);
   if (!isValidPassword) {
     return res.status(404).json({
+      code: '404',
       status: 'error',
       message: 'user not found'
     });
@@ -53,7 +56,8 @@ module.exports = async (req, res) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  res.json({
+  res.status(200).json({
+    code: '200',
     status: 'success',
     data: {
       id: user.id,

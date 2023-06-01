@@ -3,6 +3,7 @@ module.exports = async (req, res) => {
   
   if (!refreshToken && !accessToken) {
     return res.status(403).json({
+      code: '403',
       status: 'error',
       message: 'already logout'
     });
@@ -11,7 +12,8 @@ module.exports = async (req, res) => {
   res.clearCookie('refreshToken');
   res.clearCookie('accessToken');
 
-  res.json({
+  res.status(200).json({
+    code: '200',
     status: 'success',
     message: 'logout success'
   });

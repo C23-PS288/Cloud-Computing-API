@@ -14,6 +14,7 @@ module.exports = async (req, res) => {
 
   if (validate.length) {
     return res.status(400).json({
+      code: '400',
       status: 'error',
       message: validate
     });
@@ -25,6 +26,7 @@ module.exports = async (req, res) => {
 
   if (user) {
     return res.status(409).json({
+      code: '409',
       status: 'error',
       message: 'email already used'
     });
@@ -40,10 +42,11 @@ module.exports = async (req, res) => {
 
   const createdUser = await User.create(data);
 
-  return res.json({
+  return res.status(200).json({
+    code: '200',
     status: 'success',
     data: {
       id: createdUser
     }
-  })
+  });
 }
