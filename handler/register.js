@@ -46,11 +46,8 @@ module.exports = async (req, res) => {
     return res.status(200).json({
       code: '200',
       status: 'success',
-      data: {
-        id: createdUser
-      }
+      data: createdUser
     });
-    
   } catch (error) {
     return res.status(500).json({
       code: '500',
