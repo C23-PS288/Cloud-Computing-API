@@ -53,7 +53,6 @@ async function register(req, res) {
     password: hashPassword,
   }
 
-  try {
     const createdUser = await User.create(dataUser);
     return res.status(200).json({
       code: '200',
@@ -61,13 +60,6 @@ async function register(req, res) {
       data: createdUser,
     });
 
-  } catch (error) {
-    return res.status(500).json({
-      code: '500',
-      status: 'error',
-      message: 'internal server error',
-    });
-  }
 }
 
 async function login(req, res) {
