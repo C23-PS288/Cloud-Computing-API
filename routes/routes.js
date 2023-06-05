@@ -1,21 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const usersHandler = require('../handler');
 const authenticateToken = require('../middleware/checkMiddleware');
+const { 
+  register, 
+  login, 
+  getUser, 
+  getAllUser, 
+  updateUser, 
+  logoutUser 
+} = require('../handler/user/handler');
 
-router.post('/register', usersHandler.register);
-router.post('/login', usersHandler.login);
-router.get('/', usersHandler.checkAllUser);
-router.get('/:id', usersHandler.getUser);
-router.post('/:id', usersHandler.updateUser);
-router.post('/logout', usersHandler.logout);
-router.get('/protected', authenticateToken, (req, res) => {
-  const userId = req.user.id;
-
-  res.json({
-    message: 'Protected route accessed successfully',
-    userId: userId,
-  });
-});
+router.post('/logout', logoutUser);
+router.get('/', authenticateToken, getAllUser);
+router.post('/register', register);
+router.post('/login', login);
+router.get('/:id', getUser);
+router.post('/:id', updateUser);
 
 module.exports = router;
