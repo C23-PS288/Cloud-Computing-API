@@ -4,42 +4,42 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
     },
     nama_warung: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     menu: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     kategori: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     harga: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     menu_pic: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     }, 
     createdAt: {
       field: 'created_at',
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
     },
     updatedAt: {
       field: 'updated_at',
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
     }
 
   }, {
     tableName: 'foods',
-    timestamps: true
+    timestamps: true,
   });
 
   return Food;

@@ -8,35 +8,35 @@ module.exports = {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
     },
     nama_warung: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     menu: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     kategori: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     harga: {
       type: Sequelize.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     menu_pic: {
       type: Sequelize.STRING,
-      allowNull: true
+      allowNull: true,
     },
     created_at: {
       type: Sequelize.DATE,
-      allowNull: false
+      allowNull: false,
     },
     updated_at: {
       type: Sequelize.DATE,
-      allowNull: false
+      allowNull: false,
     }
    });
   },
