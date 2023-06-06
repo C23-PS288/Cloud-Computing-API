@@ -134,6 +134,7 @@ async function login(req, res) {
         id: user.id,
         name: user.name,
         email: user.email,
+        phone: user.phone,
         accessToken,
         refreshToken,
       },
@@ -152,7 +153,7 @@ async function getUser(req, res) {
   const id = req.params.id;
   try {
     const user = await User.findByPk(id, {
-      attributes: ['id', 'name', 'email']
+      attributes: ['id', 'name', 'email', 'phone']
     });
 
     if (!user) {
@@ -182,7 +183,7 @@ async function getUser(req, res) {
 async function getAllUser(req, res) {
   try {
     const user = await User.findAll({
-      attributes: ['id', 'name', 'email']
+      attributes: ['id', 'name', 'email', 'phone']
     });
 
     return res.status(200).json({
@@ -202,10 +203,19 @@ async function getAllUser(req, res) {
 
 async function updateUser(req, res) {
   const id = req.params.id;
-  const { name } = req.body;
+  const { name, phone } = req.body;
   const schema = {
     name: 'string|empty:false',
     email: 'email|empty:false',
+    phone: {
+      type: 'string',
+      pattern: /^[0-9]{10,12}$/,
+      empty: false,
+      messages: {
+        stringPattern: 'invalid phone number',
+        stringEmpty: 'phone cannot empty',
+      },
+    },
   }
 
   const validate = validation.validate(req.body, schema);
@@ -246,6 +256,7 @@ async function updateUser(req, res) {
     await user.update({
       name,
       email,
+      phone,
     });
   
     return res.status(200).json({
@@ -255,6 +266,7 @@ async function updateUser(req, res) {
         id: user.id,
         name,
         email,
+        phone,
       }
     });
 
