@@ -5,10 +5,19 @@ const { generateAccessToken, generateRefreshToken } = require('../../config/toke
 const validation = new Validator();
 
 async function register(req, res) {
-  const { name, email, password, confirmPassword } = req.body;
+  const { name, email, phone, password, confirmPassword } = req.body;
   const schema = {
     name: 'string|empty:false',
     email: 'email|empty:false',
+    phone: {
+      type: 'string',
+      pattern: /^[0-9]{10,12}$/,
+      empty: false,
+      messages: {
+        stringPattern: 'invalid phone number',
+        stringEmpty: 'phone cannot empty',
+      },
+    },
     password: 'string|min:8',
     confirmPassword: 'string|min:8',
   }
@@ -50,6 +59,7 @@ async function register(req, res) {
   const dataUser = {
     name: name,
     email: email,
+    phone: phone,
     password: hashPassword,
   }
 
