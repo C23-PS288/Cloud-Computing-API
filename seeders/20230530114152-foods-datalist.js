@@ -26,8 +26,7 @@ module.exports = {
         nama_warung: 'Masakan Padang Sari Minang',
         menu: 'Nasi Rendang Limpa',
         kategori: 'Rendang',
-        harga: 25000
-        ,
+        harga: 25000,
         menu_pic: '',
         created_at: new Date(),
         updated_at: new Date()
@@ -36,8 +35,7 @@ module.exports = {
         nama_warung: 'Masakan Padang Sari Minang',
         menu: 'Nasi Rendang Hati',
         kategori: 'Rendang',
-        harga: 25000
-        ,
+        harga: 25000,
         menu_pic: '',
         created_at: new Date(),
         updated_at: new Date()
@@ -47,8 +45,7 @@ module.exports = {
         nama_warung: 'Masakan Padang Sari Minang',
         menu: 'Sate Padang Pariaman',
         kategori: 'Sate',
-        harga: 26000
-        ,
+        harga: 26000,
         menu_pic: '',
         created_at: new Date(),
         updated_at: new Date()
@@ -57,8 +54,7 @@ module.exports = {
         nama_warung: 'Masakan Padang Sari Minang',
         menu: 'Nasi Ayam Bakar Bumbu Padang',
         kategori: 'Ayam Bakar',
-        harga: 29000
-        ,
+        harga: 29000,
         menu_pic: '',
         created_at: new Date(),
         updated_at: new Date()
