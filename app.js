@@ -4,7 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const router = require('./routes/routes');
+const userRouter = require('./routes/userRoutes');
+const foodRouter = require('./routes/foodRoutes');
 
 const app = express();
 const port = process.env.PORT || '8080';
@@ -20,7 +21,8 @@ app.get('/', (req, res) => {
     message: 'connection success',
   });
 });
-app.use('/users', router);
+app.use('/users', userRouter);
+app.use('/foods', foodRouter)
 
 app.listen(port, function () {
   console.log(`app listening on port ${port}!`)
