@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const userRouter = require('./routes/userRoutes');
 const foodRouter = require('./routes/foodRoutes');
+const recommendationRouter = require('./routes/recommendationRoutes');
 
 const app = express();
 const port = process.env.PORT || '8080';
@@ -22,7 +23,8 @@ app.get('/', (req, res) => {
   });
 });
 app.use('/users', userRouter);
-app.use('/foods', foodRouter)
+app.use('/foods', foodRouter);
+app.use('/recommendation', recommendationRouter);
 
 app.listen(port, function () {
   console.log(`app listening on port ${port}!`)
