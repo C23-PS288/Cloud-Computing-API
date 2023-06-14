@@ -10,11 +10,11 @@ const {
   logoutUser 
 } = require('../handler/user/handler');
 
-router.post('/logout', logoutUser);
+router.post('/logout', authenticateToken, logoutUser);
 router.get('/', authenticateToken, getAllUser);
 router.post('/register', register);
 router.post('/login', login);
-router.get('/:id', getUser);
-router.post('/:id', updateUser);
+router.get('/:id', authenticateToken, getUser);
+router.post('/:id', authenticateToken, updateUser);
 
 module.exports = router;
