@@ -7,7 +7,7 @@ const {
 } = process.env;
 
 exports.generateAccessToken = ({ id, email }) => {
-  return jwt.sign({ id,email }, ACCESS_TOKEN_SECRET_KEY, { expiresIn: '5m' });
+  return jwt.sign({ id,email }, ACCESS_TOKEN_SECRET_KEY, { expiresIn: '1d' });
 };
 
 exports.generateRefreshToken = ({ id, email }) => {
